@@ -1,0 +1,48 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{% load static %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'Kernel/css/main.css' %}">
+    <script src="{% static 'Kernel/highcharts/js/highcharts.js' %}"></script>
+    <script src="{% static 'Kernel/highcharts/js/modules/exporting.js' %}"></script>
+</head>
+
+{% block bootstrap4_content %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">DjaDjaCharts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Import Data</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">History</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; DjaDjaCharts V.0.0.0</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+{% endblock %}
