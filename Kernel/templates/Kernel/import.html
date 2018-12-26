@@ -1,0 +1,109 @@
+{% extends 'Kernel/base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+   <section id="firstSection">
+      <div class="container" style="margin-left: -10%; margin-top: 6%">
+          <div class="row justify-content-center">
+            <div class="col-8" style="margin-left: -20%; margin-right: 10%">
+              {% include 'Kernel/messages.html' %}
+              <form method="post" enctype="multipart/form-data" novalidate  action="/import">
+                {% csrf_token %}
+
+                {% for hidden_field in form.hidden_fields %}
+                  {{ hidden_field }}
+                {% endfor %}
+
+                {% if form.non_field_errors %}
+                  <div class="alert alert-danger" role="alert">
+                    {% for error in form.non_field_errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                {% for field in form.visible_fields %}
+                  {% if field.name != 'abscisse' and  field.name != 'ordonnee' %}
+                  <div class="form-group">
+                    {{ field.label_tag }}
+
+                    {% if form.is_bound %}
+                      {% if field.errors %}
+                        {% render_field field class="form-control is-invalid" %}
+                        {% for error in field.errors %}
+                          <div class="invalid-feedback">
+                            {{ error }}
+                          </div>
+                        {% endfor %}
+                      {% else %}
+                        {% render_field field class="form-control is-valid" %}
+                      {% endif %}
+                    {% else %}
+                      {% render_field field class="form-control" %}
+                    {% endif %}
+
+                    {% if field.help_text %}
+                      <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                  </div>
+                  {% endif %} 
+                {% endfor %}
+                <button type="button" name="load_data" id ="load_data" class="btn btn-primary">Load Data</button>
+          </div>
+          <div id="rightDivImport" class="col-4" style="margin-right: -60%">
+            <div id="abscisse" class="form-group">
+              {{ form.visible_fields.3.label_tag }}
+
+              {% if form.is_bound %}
+                {% if form.visible_fields.3.errors %}
+                  {% render_field form.visible_fields.3 class="form-control is-invalid" %}
+                  {% for error in form.visible_fields.3.errors %}
+                    <div class="invalid-feedback">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  {% render_field form.visible_fields.3 class="form-control is-valid" %}
+                {% endif %}
+              {% else %}
+                {% render_field form.visible_fields.3 class="form-control" %}
+              {% endif %}
+
+              {% if form.visible_fields.3.help_text %}
+                <small class="form-text text-muted">{{ form.visible_fields.3.help_text }}</small>
+              {% endif %}
+            </div>
+            <div id="ordonnee" class="form-group">
+              {{ form.visible_fields.4.label_tag }}
+
+              {% if form.is_bound %}
+                {% if form.visible_fields.4.errors %}
+                  {% render_field form.visible_fields.4 class="form-control is-invalid" %}
+                  {% for error in form.visible_fields.4.errors %}
+                    <div class="invalid-feedback">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  {% render_field form.visible_fields.4 class="form-control is-valid" %}
+                {% endif %}
+              {% else %}
+                {% render_field form.visible_fields.4 class="form-control" %}
+              {% endif %}
+
+              {% if form.visible_fields.4.help_text %}
+                <small class="form-text text-muted">{{ form.visible_fields.4.help_text }}</small>
+              {% endif %}
+            </div>
+            <button type="submit" name="validate" id ="validate" class="btn btn-warning">Plot Data</button>
+          </div>
+        </div>
+      </div> 
+      </form>
+        <div id="csvResult" style="overflow-x:auto; overflow-y:auto;">
+
+        </div>
+    </section>
+{% endblock %}

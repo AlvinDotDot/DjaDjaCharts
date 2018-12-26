@@ -1,0 +1,20 @@
+{% extends 'Kernel/base.html' %}
+
+{% load static %}
+
+{% block content %}
+	<section id="firstSection">
+		<div class="container" style="margin-left: 0%; margin-top: 10%">
+          <div class="row justify-content-center">
+            <div class="col" style="margin-left: 0%; margin-right: 10%">
+				<h1> {{ fichier.nom }}, importé le {{ fichier.date }} </h1>
+			</div>
+		  </div>
+		</div>
+		<div id="report_charts"></div>
+	</section>
+	<script>
+	  var abscisse = {{abscisse | safe}};
+	  var ordonnee = {{ordonnee | safe}};
+    </script>
+{% endblock %}

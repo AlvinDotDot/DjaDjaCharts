@@ -11,20 +11,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'Kernel/css/main.css' %}">
     <script src="{% static 'Kernel/highcharts/js/highcharts.js' %}"></script>
     <script src="{% static 'Kernel/highcharts/js/modules/exporting.js' %}"></script>
+    <script src="{% static 'Kernel/js/jquery.min.js' %}"></script>
+    <script src="{% static 'Kernel/js/csv.js' %}"></script>
+    <script src="{% static 'Kernel/js/simpleLineCharts.js' %}"></script>
 </head>
 
 {% block bootstrap4_content %}
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">DjaDjaCharts</a>
+        <a class="navbar-brand"  href="{% url 'accueil' %}">DjaDjaCharts</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Import Data</a>
+              <a class="nav-link"  href="{% url 'import' %}">Import Data</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">History</a>
@@ -33,16 +36,13 @@
         </div>
       </div>
     </nav>
-
+    <div class="ajaxProgress">
+      <h3>Please wait ...</h3>
+      <img src="{%static 'Kernel/img/ajax-loader.gif' %}" alt="loading" />
+    </div>
     {% block content %}
     {% endblock %}
 
-    <!-- Footer -->
-    <footer class="py-5 bg-black">
-      <div class="container">
-        <p class="m-0 text-center text-white small">Copyright &copy; DjaDjaCharts V.0.0.0</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+  <!-- <div class="footer">Copyright &copy; DjaDjaCharts V.0.0.0</div> >
 
 {% endblock %}

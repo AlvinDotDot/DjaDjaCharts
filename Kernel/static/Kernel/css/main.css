@@ -5,7 +5,7 @@
  */
 
 body {
-  font-family: 'Times New Roman';
+  font-family: 'Lucida Sans Unicode';
 }
 
 h1,
@@ -14,8 +14,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Times New Roman';
-  font-weight: 800 !important;
+  font-family: 'Lucida Sans Unicode';
+  font-weight: 800;
 }
 
 .btn-xl {
@@ -27,7 +27,7 @@ h6 {
 }
 
 .bg-black {
-  background-color: #000 !important;
+  background-color: #000;
 }
 
 .rounded-pill {
@@ -57,7 +57,7 @@ h6 {
 header.masthead {
   position: relative;
   overflow: visible;
-  height: 100%;
+  height: 90%;
   padding-top: calc(7rem + 72px);
   padding-bottom: 7rem;
   background: -webkit-gradient(linear, left bottom, left top, from(#0b46c3), to(#0be3a7));
@@ -90,34 +90,6 @@ header.masthead .bg-circle {
   background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%);
 }
 
-/*header.masthead .bg-circle-1 {
-  height: 90rem;
-  width: 90rem;
-  bottom: -55rem;
-  left: -55rem;
-}
-
-header.masthead .bg-circle-2 {
-  height: 50rem;
-  width: 50rem;
-  top: -25rem;
-  right: -25rem;
-}
-
-header.masthead .bg-circle-3 {
-  height: 20rem;
-  width: 20rem;
-  bottom: -10rem;
-  right: 5%;
-}
-
-header.masthead .bg-circle-4 {
-  height: 30rem;
-  width: 30rem;
-  top: -5rem;
-  right: 35%;
-}*/
-
 @media (min-width: 500px) {
   header.masthead {
     padding-top: calc(10rem + 55px);
@@ -131,40 +103,55 @@ header.masthead .bg-circle-4 {
   }
 }
 
-.bg-primary {
-  background-color: #ee0979 !important;
-}
-
-.btn-primary {
-  background-color: #ee0979;
-  border-color: #ee0979;
-}
-
-.btn-primary:active, .btn-primary:focus, .btn-primary:hover {
-  background-color: #bd0760 !important;
-  border-color: #bd0760 !important;
-}
-
-.btn-primary:focus {
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
-  box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
-}
-
-.btn-secondary {
-  background-color: #ff6a00;
-  border-color: #ff6a00;
-}
-
-.btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
-  background-color: #cc5500 !important;
-  border-color: #cc5500 !important;
-}
-
-.btn-secondary:focus {
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
-  box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
-}
-
 #firstSection {
   height: 80%;
 }
+
+.footer {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 1);
+  text-align: center;
+}
+
+#csvResult {
+  height: 60%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+}
+
+#abscisse {
+  display: none;
+}
+
+#ordonnee {
+  display: none;
+}
+
+.ajaxProgress {
+  display: none;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;  
+  text-align: center;
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  width: 200px;
+  height: 80px;
+  margin-left: -100px; /* Cette valeur doit être la moitié négative de la valeur du width */
+  margin-top: 30px;
+  z-index: 10;
+}
+
+#validate{
+  display: none;
+  text-align: center;
+  margin-left: 40%;
+} 
+
