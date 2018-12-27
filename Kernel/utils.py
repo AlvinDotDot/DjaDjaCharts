@@ -1,12 +1,12 @@
 import io, csv
 
-def csvToArrayData(csv_file):
+def csvToArrayData(csv_file, delimiterX):
 	data_set = csv_file.read().decode('utf-8')
 	io_string = io.StringIO(data_set, newline=None)
 	data =[]
 	i = 0
 	header = []
-	for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+	for column in csv.reader(io_string, delimiter=delimiterX, quotechar="|"):
 		if i == 0:
 			header.append(column)
 		i = 1

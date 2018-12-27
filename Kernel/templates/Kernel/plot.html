@@ -11,7 +11,23 @@
 			</div>
 		  </div>
 		</div>
-		<div id="report_charts"></div>
+		<div id="leftPart">
+			<div id="report_charts"></div>
+			<label for='name'>Background color :</label>
+			<div id="colorSelector"><div style="background-color: #0000ff"></div></div>
+			<label for='name'>Line color :</label>
+			<div id="colorSelectorLine"><div style="background-color: #0000ff"></div></div>
+			<label for='name'>Title :</label>
+			<div id="graphTitleDiv"><input id="graphTitle" type="text" class="text-line" /></div>
+		</div>
+		<div id="middlePart" style="margin-left: 20%; margin-top: -15%">
+			<label for='name'>Subtitle :</label>
+			<div id="graphSubTitleDiv"><input id="graphSubTitle" type="text" class="text-line" /></div>
+			<label for='name'>Yaxis Name :</label>
+			<div id="graphYaxisTitleDiv"><input id="graphYaxisTitle" type="text" class="text-line" /></div>
+			<label for='name'>Xaxis Name :</label>
+			<div id="graphXaxisTitleDiv"><input id="graphXaxisTitle" type="text" class="text-line" /></div>
+		</div>
 	</section>
 	<script>
 	  var abscisse = {{abscisse | safe}};

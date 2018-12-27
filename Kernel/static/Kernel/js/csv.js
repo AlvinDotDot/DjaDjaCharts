@@ -4,6 +4,7 @@ $(document).ready(function(){
 		var form = $('form').get(0);
 		form_data = new FormData();
 		form_data.append('file', ($(document).find('[type=file]')[0].files[0]));
+		form_data.append('delimiter', document.querySelector('input[name="delimiter"]:checked').value);
 		$('.ajaxProgress').show();
 		$.ajax({
 			url: '/preLoad',

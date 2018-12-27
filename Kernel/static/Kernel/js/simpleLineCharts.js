@@ -1,15 +1,9 @@
 window.addEventListener('load', function(_e) {
-  console.debug(abscisse);
+
   var chart = new Highcharts.Chart({
     chart: {
       renderTo: document.getElementById('report_charts'),
-      backgroundColor: {
-            linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-            stops: [
-                [0, '#d4d3d4'],
-                [1, '#aaaaaa']
-            ]
-        },
+      backgroundColor: '#d4d3d4',
     },
     title: {
         text: 'Average fruit consumption during one week'
@@ -69,4 +63,62 @@ window.addEventListener('load', function(_e) {
     }]
 });
 
+  $('#colorSelectorLine').ColorPicker({
+  color: '#0000ff',
+  onShow: function (colpkr) {
+    $(colpkr).fadeIn(500);
+    return false;
+  },
+  onHide: function (colpkr) {
+    $(colpkr).fadeOut(500);
+    return false;
+  },
+  onChange: function (hsb, hex, rgb) {
+    $('#colorSelectorLine div').css('backgroundColor', '#' + hex);
+        var series = chart.series[0];
+        series.color = '#' + hex;
+        series.graph.attr({ 
+            stroke: '#' + hex
+        });
+        chart.legend.colorizeItem(series, series.visible);
+        $.each(series.data, function(i, point) {
+            point.graphic.attr({
+                fillColor: '#' + hex
+            });
+            point.update({
+            marker:{
+                fillColor: '#' + hex,
+                states: {
+                      hover: {
+                        fillColor: '#' + hex,
+                        lineColor: '#' + hex                                 
+                    }
+                }
+            }
+            });
+        });
+        series.redraw();
+      }
+  });
+
+  $('#graphTitle').keyup(function () {
+    chart.setTitle({ text: $('#graphTitle')[0].value });
+});
+
+  $('#graphSubTitle').keyup(function () {
+    chart.setSubtitle({ text: $('#graphSubTitle')[0].value });
+});
+
+  $('#graphYaxisTitle').keyup(function () {
+    chart.yAxis[0].setTitle({
+        text: $('#graphYaxisTitle')[0].value
+  });
+  });
+
+  $('#graphXaxisTitle').keyup(function () {
+    chart.xAxis[0].setTitle({
+        text: $('#graphXaxisTitle')[0].value
+  });
+
+});
 });

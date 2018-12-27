@@ -19,7 +19,7 @@ def newFile(request):
 		form = FichierForm(request.POST, request.FILES)
 		if form.is_valid():
 			fichier = form.save(commit=False)
-			data = utils.csvToArrayData(request.FILES['file'])
+			data = utils.csvToArrayData(request.FILES['file'], request.POST['delimiter'])
 			fichier.absc_data = utils.getColumn(data[0],int(request.POST['abscisse']))
 			fichier.ord_data = utils.getColumn(data[0],int(request.POST['ordonnee']))
 			fichier.save()
@@ -31,10 +31,11 @@ def newFile(request):
 @csrf_exempt
 def preLoadData(request):
 	csv_file = request.FILES['file']
+	print(request.POST['delimiter'])
 	if not str(csv_file).endswith('.csv'):
 		messages.error(request, "Le fichier n'est pas un csv")
 
-	data = utils.csvToArrayData(csv_file)
+	data = utils.csvToArrayData(csv_file, request.POST['delimiter'])
 	return JsonResponse(data, safe=False)
 
 def plot(request, id_plot):
